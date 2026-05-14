@@ -1,11 +1,15 @@
 from flask import Flask, request
 from twilio.twiml.messaging_response import MessagingResponse
 import anthropic
+from dotenv import load_dotenv
+
+# 1. Cargar las variables del archivo .env
+load_dotenv()
 
 app = Flask(__name__)
 
 
-client = anthropic.Anthropic(api_key="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")
+client = anthropic.Anthropic("ANTHROPIC_API_KEY")
 
 @app.route("/whatsapp", methods=['POST'])
 def whatsapp_reply():
